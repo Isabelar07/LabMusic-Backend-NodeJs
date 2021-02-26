@@ -5,17 +5,21 @@ import { BaseDataBase } from "./BaseDataBase";
 export class UserDataBase extends BaseDataBase {
 
     public async insertUser(
-        user: User
+        id: string,
+        name: string,
+        nickName: string,
+        email: string,
+        password: string
     ): Promise<void> {
         try {
 
             await this.getConnection()
             .insert({
-                id: user.id,
-                name: user.name,
-                nickName: user.nickName,
-                email: user.email,
-                password: user.password
+                id, 
+                name,
+                nickName,
+                email,
+                password
             }).into(this.tableName.users)
 
         } catch (error) {
