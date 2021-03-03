@@ -95,7 +95,7 @@ describe("SignUp Test Flow", () => {
         }
     });
 
-    test.skip("Should return error when invalid email format", async () => {
+    test.skip("Should return All addresses must have an @ Error on invalid email", async () => {
 
         expect.assertions(2)
 
@@ -117,7 +117,7 @@ describe("SignUp Test Flow", () => {
         }
     });
 
-    test("Should return Missing Input Error on empty password", async () => {
+    test.skip("Should return Missing Input Error on empty password", async () => {
 
         expect.assertions(2)
 
@@ -135,6 +135,28 @@ describe("SignUp Test Flow", () => {
         } catch (error) {
             expect(error.statusCode).toBe(417);
             expect(error.message).toBe("Please, enter the information required")
+        }
+    });
+
+    test.skip("Should return Invalid password Error on password with length shorter than 6", async () => {
+
+        expect.assertions(2)
+
+        const user = {
+            name: "Isabela",
+            nickName: "isaa",
+            email: "isabela@gmail.com",
+            password: "123"
+
+        } as SignupInputDTO
+
+        try {
+
+            await userBusiness.createUser(user)
+
+        } catch (error) {
+            expect(error.statusCode).toBe(411);
+            expect(error.message).toBe("Enter at least 6 characters")
         }
     });
     
