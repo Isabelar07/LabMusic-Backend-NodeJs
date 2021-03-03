@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDataBase } from "../data/BaseDataBase";
-import { UserDataBase } from "../data/UserBaseDataBase";
+import { UserDataBase } from "../data/UserDataBase";
 import { SignupInputDTO } from "../entities/User";
 import { CustomError } from "../error/CustomError";
 import { Authenticator } from "../service/Authenticator";
