@@ -52,7 +52,7 @@ describe("SignUp Test Flow", () => {
             
     });
 
-    test("Should return Missing Input Error on empty nickname", async () => {
+    test.skip("Should return Missing Input Error on empty nickname", async () => {
 
         expect.assertions(2)
 
@@ -73,7 +73,27 @@ describe("SignUp Test Flow", () => {
             expect(error.message).toEqual("Please, enter the information required");
         }
     })
-    
+
+    test.skip("Should return Missing Input Error on empty email", async () => {
+
+        expect.assertions(2)
+
+        const user = {
+            name: "Isabela",
+            nickName: "isaa",
+            email: "",
+            password: "123456"
+        } as SignupInputDTO
+
+        try {
+
+            await userBusiness.createUser(user)
+
+        } catch (error) {
+            expect(error.statusCode).toBe(417);
+            expect(error.message).toBe("Please, enter the information required")
+        }
+    })
     
 })
 
