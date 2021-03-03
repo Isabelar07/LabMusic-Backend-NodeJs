@@ -1,4 +1,4 @@
-import { UserDataBase } from "../data/UserBaseDataBase";
+import { UserDataBase } from "../data/UserDataBase";
 import { SignupInputDTO } from "../entities/User";
 import { CustomError } from "../error/CustomError";
 import { Authenticator } from "../service/Authenticator";
@@ -17,11 +17,11 @@ export class UserBusiness {
     async createUser(user: SignupInputDTO) {
 
         if (!user.name || !user.nickName || !user.email || !user.password) {
-            throw new CustomError(204, "Please, enter the information required")
+            throw new CustomError(417, "Please, enter the information required")
         }
 
         if(!user.email.includes('@')) {
-            throw new CustomError (404,"Invalid email")
+            throw new CustomError (417,"Invalid email")
         }
 
         if (user.password.length < 6) {
