@@ -95,7 +95,7 @@ describe("SignUp Test Flow", () => {
         }
     });
 
-    test("Should return error when invalid email format", async () => {
+    test.skip("Should return error when invalid email format", async () => {
 
         expect.assertions(2)
 
@@ -114,6 +114,27 @@ describe("SignUp Test Flow", () => {
         } catch (error) {
             expect(error.statusCode).toBe(417);
             expect(error.message).toBe("Invalid email")
+        }
+    });
+
+    test("Should return Missing Input Error on empty password", async () => {
+
+        expect.assertions(2)
+
+        const user = {
+            name: "Isabela",
+            nickName: "isaa",
+            email: "isabela@gmail.com",
+            password: ""
+        }
+
+        try {
+
+            await userBusiness.createUser(user)
+
+        } catch (error) {
+            expect(error.statusCode).toBe(417);
+            expect(error.message).toBe("Please, enter the information required")
         }
     });
     
