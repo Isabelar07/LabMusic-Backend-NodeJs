@@ -5,9 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-export class BaseDataBase {
+export abstract class BaseDataBase {
 
-    private static connection: Knex | null = null
+    private static connection: Knex | null = null;
 
     protected tableName = {
         users: "LabMusic_Users"
