@@ -6,6 +6,7 @@
       "outDir": "./build",        /* Redirect output structure to the directory. */
       "rootDir": "./",         /* Specify the root directory of input files. */
       "removeComments": true,     /* Do not emit comments to output. */
+      "strict": true,
       "noImplicitAny": true,       /* Raise error on declarations with an implied 'any' type. */
       "esModuleInterop": true,
 			"skipLibCheck": true,                     /* Skip type checking of declaration files. */
