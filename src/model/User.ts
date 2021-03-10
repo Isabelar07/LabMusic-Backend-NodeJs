@@ -6,6 +6,16 @@ export class User {
         public readonly email: string,
         public readonly password: string
     ) {}
+
+    static toUserModel(user: any): User {
+        return new User(
+            user.id,
+            user.name,
+            user.nickName,
+            user.email,
+            user.password
+        );
+    }
 }
 
 export interface SignupInputDTO {

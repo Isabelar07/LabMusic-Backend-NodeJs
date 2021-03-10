@@ -1,8 +1,9 @@
 import { UserBusiness } from "../src/business/UserBusiness";
-import { SignupInputDTO, User } from "../src/entities/User";
+import { SignupInputDTO, User } from "../src/model/User";
 
 const userDataBase = {
-    createUser: jest.fn(async (user: User) => {})
+    createUser: jest.fn(async (user: User) => {}),
+    
 }
 
 const authenticator = {
