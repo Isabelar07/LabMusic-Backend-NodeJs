@@ -1,7 +1,7 @@
 export class CustomError extends Error {
-    constructor(public error: number, message: string){
+    constructor(public statusCode: number, message: string){
         super(message);
-        this.error = error;
+        this.statusCode = 400
     }
 
 }

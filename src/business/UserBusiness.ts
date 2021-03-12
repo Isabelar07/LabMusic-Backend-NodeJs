@@ -1,5 +1,5 @@
 import { UserDataBase } from "../data/UserDataBase";
-import { LoginInputDTO, SignupInputDTO } from "../entities/User";
+import { LoginInputDTO, SignupInputDTO } from "../model/User";
 import { CustomError } from "../error/CustomError";
 import { Authenticator } from "../service/Authenticator";
 import { HashManager } from "../service/HashManager";
@@ -15,7 +15,6 @@ export class UserBusiness {
     ) {}
 
     async createUser(user: SignupInputDTO) {
-
 
         if (!user.name || !user.nickName || !user.email || !user.password) {
             throw new CustomError(417, "Please, enter the information required")
@@ -79,6 +78,5 @@ export class UserBusiness {
         } catch (error) {
             throw new CustomError(400,"Erro ao logar: "+error.sqlMessage);
         }
-
 }
 }

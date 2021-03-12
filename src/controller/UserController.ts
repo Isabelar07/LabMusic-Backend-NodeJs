@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDataBase } from "../data/BaseDataBase";
 import { UserDataBase } from "../data/UserDataBase";
-import { LoginInputDTO, SignupInputDTO } from "../entities/User";
+import { LoginInputDTO, SignupInputDTO } from "../model/User";
 import { CustomError } from "../error/CustomError";
 import { Authenticator } from "../service/Authenticator";
 import { HashManager } from "../service/HashManager";
@@ -33,7 +33,6 @@ export class UserController {
             res.status(200).send({ token })
 
         } catch (error) {
-            console.log(error)
             throw new CustomError(500, "An unexpected error ocurred")
         }
 

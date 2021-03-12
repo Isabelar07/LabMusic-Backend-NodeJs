@@ -1,20 +1,10 @@
-import { User } from "../entities/User";
+import { User } from "../model/User";
 import { CustomError } from "../error/CustomError";
 import { BaseDataBase } from "./BaseDataBase";
 
 export class UserDataBase extends BaseDataBase {
 
     private static TABLE_NAME = "LabMusic_Users"
-
-    private static toUserModel(user: any): User {
-        return new User(
-            user.id,
-            user.name,
-            user.nickName,
-            user.email,
-            user.password
-        );
-    }
 
     public async insertUser(
         id: string,
@@ -35,11 +25,9 @@ export class UserDataBase extends BaseDataBase {
             }).into(this.tableName.users)
 
         } catch (error) {
-            throw new CustomError(500, "An unexpected error ocurred" || error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage || error.message)
         }
     }
-
-    
 
     public async selectUserByEmail(email: string): Promise<User> {
 
@@ -50,10 +38,29 @@ export class UserDataBase extends BaseDataBase {
             .from(UserDataBase.TABLE_NAME)
             .where({ email })
 
-            return UserDataBase.toUserModel(result[0])
+            return User.toUserModel(result[0])
+           
 
         } catch (error) {
-            throw new CustomError(500, "An unexpected error ocurred" || error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage || error.message)
+        }  
+        
+    }
+
+    public async selectUserById(id: string): Promise<User> {
+
+        try {
+
+            const result = await this.getConnection()
+            .select("*")
+            .from(UserDataBase.TABLE_NAME)
+            .where({ id })
+
+            return User.toUserModel(result[0])
+           
+
+        } catch (error) {
+            throw new CustomError(400, error.sqlMessage || error.message)
         }  
         
     }
