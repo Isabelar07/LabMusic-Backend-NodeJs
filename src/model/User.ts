@@ -8,7 +8,7 @@ export class User {
     ) {}
 
     static toUserModel(user: any): User {
-        return new User(
+        return user && new User(
             user.id,
             user.name,
             user.nickName,

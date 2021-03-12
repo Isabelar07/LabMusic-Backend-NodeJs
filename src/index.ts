@@ -2,6 +2,7 @@ import express, {Express} from 'express';
 import cors from 'cors';
 import { AddressInfo } from "net";
 import { userRouter } from './routes/UserRouter';
+import { musicRouter } from './routes/MusicRouter';
 
 const app: Express = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/user", userRouter);
+app.use("/music", musicRouter)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {

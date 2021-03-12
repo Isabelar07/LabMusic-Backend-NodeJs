@@ -33,7 +33,6 @@ export class UserController {
             res.status(200).send({ token })
 
         } catch (error) {
-            console.log(error)
             throw new CustomError(500, "An unexpected error ocurred")
         }
 

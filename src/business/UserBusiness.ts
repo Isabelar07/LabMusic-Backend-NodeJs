@@ -78,6 +78,5 @@ export class UserBusiness {
         } catch (error) {
             throw new CustomError(400,"Erro ao logar: "+error.sqlMessage);
         }
-
 }
 }

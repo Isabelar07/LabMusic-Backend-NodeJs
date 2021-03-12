@@ -25,11 +25,9 @@ export class UserDataBase extends BaseDataBase {
             }).into(this.tableName.users)
 
         } catch (error) {
-            throw new CustomError(500, "An unexpected error ocurred" || error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage || error.message)
         }
     }
-
-    
 
     public async selectUserByEmail(email: string): Promise<User> {
 
@@ -41,9 +39,28 @@ export class UserDataBase extends BaseDataBase {
             .where({ email })
 
             return User.toUserModel(result[0])
+           
 
         } catch (error) {
-            throw new CustomError(500, "An unexpected error ocurred" || error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage || error.message)
+        }  
+        
+    }
+
+    public async selectUserById(id: string): Promise<User> {
+
+        try {
+
+            const result = await this.getConnection()
+            .select("*")
+            .from(UserDataBase.TABLE_NAME)
+            .where({ id })
+
+            return User.toUserModel(result[0])
+           
+
+        } catch (error) {
+            throw new CustomError(400, error.sqlMessage || error.message)
         }  
         
     }

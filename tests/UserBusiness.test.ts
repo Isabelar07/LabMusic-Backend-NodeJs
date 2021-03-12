@@ -1,13 +1,12 @@
 import { UserBusiness } from "../src/business/UserBusiness";
-import { SignupInputDTO, User } from "../src/model/User";
+import { LoginInputDTO, SignupInputDTO, User } from "../src/model/User";
 
 const userDataBase = {
-    createUser: jest.fn(async (user: User) => {}),
-    
+    createUser: jest.fn(async (user: User) => {})
 }
 
 const authenticator = {
-    generateToken: jest.fn((token: {id: string}) => "tuts_tuts"),
+    generateToken: jest.fn((token: {id: string}) => "token_tuts"),
     getTokenData: jest.fn((payload: string) => {})
 }
 
@@ -159,7 +158,7 @@ describe("SignUp Test Flow", () => {
             expect(error.statusCode).toBe(411);
             expect(error.message).toBe("Enter at least 6 characters")
         }
-    });
-    
+    });  
 })
+
 
