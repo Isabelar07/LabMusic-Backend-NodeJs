@@ -1,1 +1,1 @@
-# LabMusic-Backend-NodeJs
+# LabMusic - em desenvolvimento
